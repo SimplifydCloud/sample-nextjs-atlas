@@ -1,5 +1,7 @@
 # Atlas — Next.js weekend explorer
 
+[![Deploy to Simplifyd Cloud](https://simplifyd.com/deploy-button.svg)](https://console.cloud.simplifyd.com/deploy?repo=https%3A%2F%2Fgithub.com%2FSimplifydCloud%2Fsample-nextjs-atlas)
+
 [![CI](https://github.com/SimplifydCloud/sample-nextjs-atlas/actions/workflows/ci.yml/badge.svg)](https://github.com/SimplifydCloud/sample-nextjs-atlas/actions/workflows/ci.yml)
 
 Six African cities. A thousand possible weekends. An editorial city explorer with original SVG illustrations, country search, region filters, saved shortlists, a selectable itinerary, live budget totals, and downloadable day plans.
@@ -24,6 +26,14 @@ Requires **Node 22.12+**. Open the URL printed by Next.js. Save a city, open its
 All activities and USD budgets are **fictional demo content**, not travel recommendations or live prices. No booking or payment takes place.
 
 ## Deploy on Simplifyd Cloud
+
+### Deploy with the button
+
+Click **Deploy to Simplifyd Cloud** above, sign in, and choose a workspace and project. Review the web service (1 vCPU, 256 MB), confirm, then deploy it from the canvas. The button creates a container service using the public, prebuilt `ghcr.io/simplifydcloud/sample-nextjs-atlas:1.0.0` image and the settings in `simplifyd.json`. Normal compute usage charges apply.
+
+For a static-site deployment, or to build your own source changes, follow the GitHub flow below.
+
+### Deploy as a static site
 
 1. Create your own repository from this template.
 2. In a Simplifyd project, choose **Add → Static Site**, then apply.
@@ -72,3 +82,7 @@ Browser tests cover region and search filters, saved shortlists, direct city lin
 - `app/style.css`: the editorial design and responsive layout.
 
 [More Simplifyd samples](https://github.com/SimplifydCloud/sample-projects) · [Next.js static export documentation](https://nextjs.org/docs/app/guides/static-exports) · MIT licensed.
+
+## Maintaining the deploy image
+
+The **Publish deploy image** GitHub Actions workflow publishes a Linux AMD64 image on a `v*` tag or a manual run with a version. For a new release, run the app checks, publish the new version, then update the image tag in `simplifyd.json`. A newly created GHCR package must be made public in its package settings before the button can pull it anonymously. Forks can publish images to their own namespace and update the manifest accordingly.
